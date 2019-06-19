@@ -109,5 +109,6 @@ Refresh your page, and try the button a few times!
 STRETCH
 -------
 Return to the /count request. This URL actually accepts a data parameter called amount. What are the acceptable values for it? What does it do?
-
+    Acceptable values are 1-5
+    It adds the amount value to the count
 Return to the /time request. Bind this request to a new <button>'s click event. Change from a hardcoded timezone parameter to accepting input from the user via a textbox. Add a catch callback that writes an error message to the <section>. Test it by entering an invalid timezone such as 'pokeroo'?

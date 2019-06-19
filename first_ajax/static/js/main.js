@@ -85,5 +85,32 @@ document.addEventListener("DOMContentLoaded", function() {
             carList.appendChild(carInfo);
         })
     });
+
+    const newTimeButton = document.getElementById('new_time_request');
+    const stretch = document.getElementById('stretch');
+    const timeText = document.getElementById('timezone');
+
+    newTimeButton.addEventListener('click', (event) => {
+        var value = timeText.value;
+        console.log(value)
+        event.preventDefault();
+
+        axios.get('http://intro-ajax-api.herokuapp.com/time', {
+            params: {timezone: value},
+        }).then((response) => {
+            console.log('We got the time based on user input!');
+            console.log('timeButton response: ', response.data);
+            const dataElem = document.createElement('p');
+            dataElem.innerHTML = response.data;
+            stretch.appendChild(dataElem);
+        })
+        .catch((error) => {
+            console.log("Oops we had an error!");
+            console.log('newTimeButton error: ', error);
+            const dataElem = document.createElement('p');
+            dataElem.innerHTML = "Sorry, that was not a valid timezone!";
+            stretch.appendChild(dataElem);
+        })
+    });
     
 });
